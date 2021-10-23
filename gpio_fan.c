@@ -66,10 +66,10 @@ int main(void)
   ret = gpiod_line_request_output(line, CONSUMER, 0);
   if (ret < 0)
   {
-    perror("Request line as output failed");
-    gpiod_line_release(line);
-    gpiod_chip_close(chip);
-    return (1);
+	  perror("Request line as output failed");
+	  gpiod_line_release(line);
+	  gpiod_chip_close(chip);
+	  return (1);
   }
   while (1)
   {
