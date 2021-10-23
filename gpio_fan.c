@@ -57,18 +57,11 @@ int main(void)
       return (1);
   }
   line = gpiod_chip_get_line(chip, GPIO_PIN);
-  if (!line) {
+  if (!line)
+  {
 	  perror("Get line failed\n");
 	  gpiod_chip_close(chip);
 	  return (1);
-  }
-  ret = gpiod_line_request_output(line, CONSUMER, 0);
-  if (ret < 0)
-  {
-      perror("Request line as output failed\n");
-      gpiod_line_release(line);
-      gpiod_chip_close(chip);
-      return (1);
   }
   while (1)
   {
