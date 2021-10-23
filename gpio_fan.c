@@ -53,15 +53,23 @@ int main(void)
   chip = gpiod_chip_open_by_name(CHIPNAME);
   if (!chip)
   {
-      perror("Open chip failed\n");
+      perror("Open chip failed");
       return (1);
   }
   line = gpiod_chip_get_line(chip, GPIO_PIN);
   if (!line)
   {
-	  perror("Get line failed\n");
+	  perror("Get line failed");
 	  gpiod_chip_close(chip);
 	  return (1);
+  }
+  ret = gpiod_line_request_output(line, CONSUMER, 0);
+  if (ret < 0)
+  {
+    perror("Request line as output failed");
+    gpiod_line_release(line);
+    gpiod_chip_close(chip);
+    return (1);
   }
   while (1)
   {
@@ -73,7 +81,7 @@ int main(void)
 		  ret = gpiod_line_set_value(line, 0);
       if (ret < 0)
 	  {
-		  perror("Set line output failed\n");
+		  perror("Set line output failed");
 		  gpiod_line_release(line);
 		  gpiod_chip_close(chip);
 		  return (1);
