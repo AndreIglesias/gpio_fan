@@ -7,7 +7,7 @@
 int ON_THRESHOLD   = 55;   // (degrees Celsius) Fan kicks on at this temperature.
 int OFF_THRESHOLD  = 45;   // (degress Celsius) Fan shuts off at this temperature.
 int SLEEP_INTERVAL = 5;    // (seconds) How often we check the core temperature.
-int GPIO_PIN       = 21;   // Which GPIO pin you're using to control the fan.
+int GPIO_PIN       = 17;   // Which GPIO pin you're using to control the fan.
 char *CHIPNAME     = "gpiochip0";
 
 #ifndef	CONSUMER
